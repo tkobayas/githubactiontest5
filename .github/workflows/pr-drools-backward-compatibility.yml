@@ -49,7 +49,7 @@ jobs:
         id: calculate_previous_version
         run: |
           CURRENT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-          PREVIOUS_VERSION=$(get_previous_version.sh $CURRENT_VERSION)
+          PREVIOUS_VERSION=$(.github/workflows/get_previous_version.sh $CURRENT_VERSION)
           echo "::set-output name=previous_version::$PREVIOUS_VERSION"
       - name: Backward Compatibility Test
         run: |
