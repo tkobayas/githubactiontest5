@@ -45,13 +45,8 @@ jobs:
           allow-snapshots: true
       - name: Build Drools
         run: mvn -B -X clean install -DskipTests
-      - name: Calculate previous version
-        id: calculate_previous_version
+      - name: Backward Compatibility Test
         run: |
           CURRENT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           PREVIOUS_VERSION=$(.github/workflows/get_previous_version.sh $CURRENT_VERSION)
-          echo "::set-output name=previous_version::$PREVIOUS_VERSION"
-      - name: Backward Compatibility Test
-        run: |
-          PREVIOUS_VERSION=${{ steps.calculate_previous_version.outputs.previous_version }}
           mvn -B clean install --file drools-reference-examples/pom.xml -Dreference.kjar.drools.version=$PREVIOUS_VERSION
