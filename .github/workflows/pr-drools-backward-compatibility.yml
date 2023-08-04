@@ -43,4 +43,4 @@ jobs:
       - name: Build Drools
         run: mvn -B clean install -DskipTests
       - name: Backward Compatibility Test
-        run: mvn -B clean verify --file drools-reference-examples/pom.xml -Dreference.kjar.drools.version=8.42.0.Final
+        run: mvn -B clean verify --file drools-reference-examples/pom.xml -Dreference.kjar.drools.version=8.41.0.Final
