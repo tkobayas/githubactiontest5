@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+    <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <!-- Keep in sync with jboss-parent version in kie-user-bom-parent/pom.xml -->
+    <version>36</version>
+  </parent>
+
+  <groupId>org.kie</groupId>
+  <artifactId>drools-parent</artifactId>
+  <packaging>pom</packaging>
+  <version>8.43.0-SNAPSHOT</version>
+
+  <name>Drools :: Parent</name>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Repository Group</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Repository Group</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <profiles>
+    <profile>
+      <id>default</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>bom</module>
+        <module>build-parent</module>
+        <module>drools-reference-examples</module>
+      </modules>
+    </profile>
+  </profiles>
+</project>
