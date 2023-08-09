@@ -21,7 +21,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        #os: [ubuntu-latest]
         java-version: [11]
         maven-version: ['3.8.7']
       fail-fast: false
@@ -47,8 +46,9 @@ jobs:
         run: mvn -B clean install -DskipTests
       - name: Backward Compatibility Test
         run: |
-          CURRENT_VERSION=`mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
-          echo "Current version: $CURRENT_VERSION"
-          PREVIOUS_VERSION=`.github/workflows/get_previous_version.sh $CURRENT_VERSION`
-          echo "Previous version: $PREVIOUS_VERSION"
-          mvn -B clean install --file drools-reference-examples/pom.xml -Dreference.kjar.drools.version=$PREVIOUS_VERSION
+          currentVersion=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo "Current version: $currentVersion"
+          previousVersion=$(.github/workflows/get_previous_version.sh $currentVersion)
+          echo "Previous version: $previousVersion"
+          mvn -B clean install --file drools-reference-examples/pom.xml -Dreference.kjar.drools.version=$previousVersion
+        shell: bash
