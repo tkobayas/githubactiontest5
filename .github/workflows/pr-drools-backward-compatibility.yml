@@ -51,4 +51,4 @@ jobs:
           PREVIOUS_VERSION=$(.github/workflows/get_previous_version.sh $CURRENT_VERSION)
           echo "Previous version: $PREVIOUS_VERSION"
           mvn -B clean install --file drools-reference-examples/pom.xml -Dreference.kjar.drools.version=$PREVIOUS_VERSION
-        shell: bash
+        #shell: bash
